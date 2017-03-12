@@ -37,7 +37,7 @@ bot.dialog('picnic.intent.greeting', [
 
 bot.dialog('help', [
     (session) => {
-        session.send('Tell me what I can do for you');
+        session.send('I am Stockito, you can ask me about whatever stock and I give you the value');
     }
 ]).triggerAction({
     matches: 'picnic.intent.help'
