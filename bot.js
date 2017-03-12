@@ -33,13 +33,14 @@ bot.dialog('picnic.intent.greeting', [
 ]).triggerAction({
     matches: 'picnic.intent.greeting'
 });
-/*
+
+
 bot.dialog('help', [
     (session) => {
         session.send('Tell me what I can do for you');
     }
 ]).triggerAction({
-    matches: 'help'
+    matches: 'picnic.intent.help'
 })
 
 //Dialog to know price of value
