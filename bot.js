@@ -1,5 +1,6 @@
 const restify = require('restify'),
       request = require('request'),
+      stock = require('./stock.js'),
       botbuilder = require('botbuilder');
 
 let server = restify.createServer();
@@ -41,7 +42,7 @@ bot.dialog('help', [
     }
 ]).triggerAction({
     matches: 'picnic.intent.help'
-})
+});
 
 //Dialog to know price of value
 
@@ -49,20 +50,13 @@ bot.dialog('consultPrice', [
     (session, args, next) => {
         let intent = args.intent;
         let name = botbuilder.EntityRecognizer.findEntity(intent.entities, 'picnic.value.name');
-        let value = session.dialogData.value = {
-            name: name ? name.entity : null
-        };
-    },
-
-    (session, results, next) => {
-        let value = session.dialogData.value;
+        session.dialogData.stockacronym = stock.mapStock(name);
+        session.send(`Okay, wait one second. I search about ${name}`);
     },
     (session, results) => {
-        let price
-        request("")
+        let price = stock.priceStock(session.dialogData.stockacronym);
         session.endDialog(`Price of ${session.dialogData.value}: ${price}`)
     }
 ]).triggerAction({
     matches: 'picnic.intent.consultPrice'
-})
-*/
+});
