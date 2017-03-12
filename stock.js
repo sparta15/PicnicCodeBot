@@ -6,11 +6,13 @@ export default [
 ]
 
 function mapStock(stockName) {
-
+    let stockacronym;
+    let quote
+    return stockacronym;
 }
 
-function priceStock(Stockacronym) {
-    
+function priceStock(stockacronym) {
+
 }
 
 

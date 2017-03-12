@@ -14,15 +14,14 @@ let connector = new botbuilder.ChatConnector({
 server.post('/api/messages', connector.listen());
 
 let bot = new botbuilder.UniversalBot(connector, (session) => {
-        session.send("hi");
-    }
-)
+    session.endDialog("Sorry, I did not understand you");
+});
 
-const model = process.env.model;
+const model = process.env.LUIS_MODEL;
 
 bot.recognizer(new botbuilder.LuisRecognizer(model));
 
-bot.dialog('greeting', [
+bot.dialog('picnic.intent.greeting', [
     (session) => {
         session.send('Hello, what\' your name?');
     },
