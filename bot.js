@@ -22,8 +22,9 @@ const model = process.env.LUIS_MODEL;
 bot.recognizer(new botbuilder.LuisRecognizer(model));
 
 bot.dialog('picnic.intent.greeting', [
-    (session) => {
+    (session, next) => {
         session.send('Hello, what\' your name?');
+        let name = botbuilder.EntityRecognizer.findEntity
     },
     (session, results) => {
         session.userData.name = result.response;

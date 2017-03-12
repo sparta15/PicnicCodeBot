@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "botbuilder": "^3.7.0",
+    "lodash": "^4.17.4",
     "restify": "^4.3.0"
   },
   "devDependencies": {},
