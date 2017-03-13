@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as restify from 'restify';
 import * as botbuilder from 'botbuilder';
-import plugin from './plugins/greeting/index'
+import greeting from './plugins/greeting/index'
 
 // Load configuration in process.env from the .env file
 dotenv.config();
@@ -26,7 +26,13 @@ const model = process.env.LUIS_MODEL;
 
 bot.recognizer(new botbuilder.LuisRecognizer(model));
 
-bot.library(plugin);
+// Set default locale
+bot.set('localizerSettings', {
+    botLocalePath: '../locale',
+    defaultLocale: 'en-us'
+});
+
+bot.library(greeting);
 
 bot.dialog('help', [
     (session) => {

@@ -1,4 +1,4 @@
-import { BotBuilder } from '@telefonica/bot-core';
+import * as BotBuilder from 'botbuilder';
 
 // This dialog is managed by this discrete steps
 export default [
