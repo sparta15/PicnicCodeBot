@@ -36,8 +36,10 @@
     "webdebug": "node --debug-brk lib/app.js"
   },
   "dependencies": {
-    "@telefonica/bot-core": "^1.14.0",
-    "dotenv": "^2.0.0"
+    "@types/restify": "^2.0.41",
+    "botbuilder": "^3.7.0",
+    "dotenv": "^2.0.0",
+    "restify": "^4.3.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.33",
