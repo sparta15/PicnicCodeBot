@@ -28,7 +28,7 @@ bot.recognizer(new botbuilder.LuisRecognizer(model));
 
 // Set default locale
 bot.set('localizerSettings', {
-    botLocalePath: '../locale',
+    botLocalePath: path.join(__dirname, '..', 'locale'),
     defaultLocale: 'en-us'
 });
 

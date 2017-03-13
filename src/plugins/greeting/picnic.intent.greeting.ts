@@ -6,5 +6,5 @@ export default [
 ];
 
 function helloWorld(session: BotBuilder.Session, args: any, next: Function) {
-    session.endDialog('hello');
+    session.endDialog(session.gettext('hello'));
 }
