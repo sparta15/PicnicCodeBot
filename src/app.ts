@@ -33,11 +33,3 @@ bot.set('localizerSettings', {
 });
 
 bot.library(greeting);
-
-bot.dialog('help', [
-    (session) => {
-        session.endDialog('Need help?, try asking me something like: What is the value of Awesome strock? and I give you the value');
-    }
-]).triggerAction({
-    matches: 'picnic.intent.help'
-});
