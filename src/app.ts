@@ -23,6 +23,7 @@ let bot = new Bot({
     }
 });
 
+console.log(bot);
 // Lets go to startup our bot
 let startup = new Startup();
 
