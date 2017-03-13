@@ -1,8 +1,9 @@
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as restify from 'restify';
-import * as botbuilder from 'botbuilder';
+import * as BotBuilder from 'botbuilder';
 import greeting from './plugins/greeting/index'
+import help from './plugins/help/index'
 
 // Load configuration in process.env from the .env file
 dotenv.config();
@@ -12,19 +13,19 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
     console.log('%s listening to %s', server.name, server.url);
 });
 
-let connector = new botbuilder.ChatConnector({
+let connector = new BotBuilder.ChatConnector({
     appId: process.env.BOT_APP_ID,
     appPassword: process.env.BOT_APP_PASSWD
 });
 server.post('/api/messages', connector.listen());
 
-let bot = new botbuilder.UniversalBot(connector, (session: botbuilder.Session) => {
+let bot = new BotBuilder.UniversalBot(connector, (session: BotBuilder.Session) => {
     session.endDialog("Sorry, I did not understand you");
 });
 
 const model = process.env.LUIS_MODEL;
 
-bot.recognizer(new botbuilder.LuisRecognizer(model));
+bot.recognizer(new BotBuilder.LuisRecognizer(model));
 
 // Set default locale
 bot.set('localizerSettings', {
@@ -33,3 +34,4 @@ bot.set('localizerSettings', {
 });
 
 bot.library(greeting);
+bot.library(help);

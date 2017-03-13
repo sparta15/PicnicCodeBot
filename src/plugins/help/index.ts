@@ -4,20 +4,15 @@
 
 import * as BotBuilder from 'botbuilder';
 
-import greeting from './picnic.intent.greeting';
-import goodbye from './picnic.intent.goodbye';
+import help from './picnic.intent.help';
 
 // create a plugin, the id must be unique in your bot
-let plugin = new BotBuilder.Library('greeting');
+let plugin = new BotBuilder.Library('help');
 
 // Add the dialogs, one by one, that this plugin can manage
 // The dialog name (1st param) is the intent name as defined in LUIS
-plugin.dialog('greeting', greeting).triggerAction({
-    matches: 'picnic.intent.greeting'
-});
-
-plugin.dialog('goodbye', goodbye).triggerAction({
-    matches: 'picnic.intent.goodbye'
+plugin.dialog('help', help).triggerAction({
+    matches: 'picnic.intent.help'
 });
 
 export default plugin;
