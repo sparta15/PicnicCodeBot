@@ -9,7 +9,7 @@ export default [
 ];
 
 async function buyStock(session: BotBuilder.Session, args: any) {
-    session.send(`Okey, I\'m going to buy it`);
+    session.send(`Okey, I\'m going to buy 5 of it`);
     await sleep(3000);
     session.endDialog('Great, you have new stocks');
 }
