@@ -36,14 +36,15 @@
     "webdebug": "node --debug-brk lib/app.js"
   },
   "dependencies": {
-    "@types/restify": "^2.0.41",
     "botbuilder": "^3.7.0",
     "dotenv": "^2.0.0",
     "lodash": "^4.17.4",
     "request": "^2.81.0",
-    "restify": "^4.3.0"
+    "restify": "^4.3.0",
+    "scrape-it": "^3.3.0"
   },
   "devDependencies": {
+    "@types/restify": "^2.0.41",
     "@types/chai": "^3.4.33",
     "@types/dotenv": "^2.0.18",
     "@types/lodash": "^4.14.55",
