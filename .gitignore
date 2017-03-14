@@ -40,3 +40,6 @@ node_modules
 typings/
 lib/
 src/**/*.js
+
+#Stock file
+quote.csv
