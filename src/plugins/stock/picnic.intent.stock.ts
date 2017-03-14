@@ -21,7 +21,7 @@ export default [
 function mapStock(session: BotBuilder.Session, args: any, next:Function) {
     let stockName = BotBuilder.EntityRecognizer.findEntity(args.intent.entities, 'company');
     let upper = _.toUpper(stockName.entity);
-    
+
     let stockacronym = dictionary.filter((item) => {
         return item.key === upper;
     });
@@ -44,13 +44,13 @@ function priceStock(session: BotBuilder.Session, args: any, next: Function) {
             } else {
                 let value = _.split(data.toString(), ',')[4];
                 session.send(`The value of ${company} is : ${value}`);
-
-                let attachment: BotBuilder.IAttachment = {
-                    contentUrl: `https://chart.finance.yahoo.com/z?s=${company}&t=6m&q=l&l=on&z=s&p=m50,m100`,
-                    contentType: 'image/png'
-                };
-
-                let msg = new BotBuilder.Message(session).attachments([attachment]);
+                let card = new BotBuilder.HeroCard(session)
+                            .title(`${company} stocks`)
+                            .images([BotBuilder.CardImage.create(session, `https://chart.finance.yahoo.com/z?s=${company}&t=6m&q=l&l=on&z=s&p=m50,m100`)])
+                            .buttons([
+                                BotBuilder.CardAction.imBack(session, `To buy stocks to ${company}`, 'Buy')
+                            ]);
+                let msg = new BotBuilder.Message(session).attachments([card]);
                 session.endDialog(msg);
             }
         })

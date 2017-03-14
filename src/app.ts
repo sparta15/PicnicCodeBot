@@ -4,7 +4,7 @@ import * as restify from 'restify';
 import * as BotBuilder from 'botbuilder';
 import greeting from './plugins/greeting/index'
 import help from './plugins/help/index'
-import stock from './plugins/stock/index'
+import trading from './plugins/stock/index'
 
 // Load configuration in process.env from the .env file
 dotenv.config();
@@ -15,16 +15,16 @@ server.listen(process.env.port || process.env.PORT || 3978, () => {
 });
 
 let connector = new BotBuilder.ChatConnector({
-    appId: process.env.BOT_APP_ID,
-    appPassword: process.env.BOT_APP_PASSWD
+    appId: process.env.MICROSOFT_APP_ID,
+    appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 server.post('/api/messages', connector.listen());
 
 let bot = new BotBuilder.UniversalBot(connector, (session: BotBuilder.Session) => {
-    session.endDialog('Sorry, I did not understand you');
+    session.endDialog('no_option');
 });
 
-const model = process.env.LUIS_MODEL;
+const model = process.env.LUIS_MODEL__STOCK__EN;
 
 bot.recognizer(new BotBuilder.LuisRecognizer(model));
 
@@ -36,4 +36,4 @@ bot.set('localizerSettings', {
 
 bot.library(greeting);
 bot.library(help);
-bot.library(stock);
+bot.library(trading);
