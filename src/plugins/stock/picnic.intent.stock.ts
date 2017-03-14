@@ -48,7 +48,7 @@ function priceStock(session: BotBuilder.Session, args: any, next: Function) {
                             .title(`${company} stocks`)
                             .images([BotBuilder.CardImage.create(session, `https://chart.finance.yahoo.com/z?s=${company}&t=6m&q=l&l=on&z=s&p=m50,m100`)])
                             .buttons([
-                                BotBuilder.CardAction.imBack(session, `To buy stocks to ${company}`, 'Buy')
+                                BotBuilder.CardAction.imBack(session, `Buy stocks to ${company}`, 'Buy')
                             ]);
                 let msg = new BotBuilder.Message(session).attachments([card]);
                 session.endDialog(msg);
