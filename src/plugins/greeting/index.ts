@@ -11,6 +11,8 @@ let plugin = new BotBuilder.Library('greeting');
 
 // Add the dialogs, one by one, that this plugin can manage
 // The dialog name (1st param) is the intent name as defined in LUIS
+// triggerAction function will match the dialog with the correct intent
+// on LUIS
 plugin.dialog('greeting', greeting).triggerAction({
     matches: 'picnic.intent.greeting'
 });
