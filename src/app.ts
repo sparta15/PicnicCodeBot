@@ -8,6 +8,7 @@ import help from './plugins/help/index'
 // Load configuration in process.env from the .env file
 dotenv.config();
 
+//Create the server that will be use to receive messages
 let server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, () => {
     console.log('%s listening to %s', server.name, server.url);
@@ -19,12 +20,14 @@ let connector = new BotBuilder.ChatConnector({
 });
 server.post('/api/messages', connector.listen());
 
+//Create bot and give a default message
 let bot = new BotBuilder.UniversalBot(connector, (session: BotBuilder.Session) => {
     session.endDialog("Sorry, I did not understand you");
 });
 
 const model = process.env.LUIS_MODEL;
 
+//Integration with LUIS
 bot.recognizer(new BotBuilder.LuisRecognizer(model));
 
 // Set default locale
@@ -33,5 +36,6 @@ bot.set('localizerSettings', {
     defaultLocale: 'en-us'
 });
 
+//Add library to use as plugins
 bot.library(greeting);
 bot.library(help);

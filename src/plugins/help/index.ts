@@ -10,7 +10,7 @@ import help from './picnic.intent.help';
 let plugin = new BotBuilder.Library('help');
 
 // Add the dialogs, one by one, that this plugin can manage
-// The dialog name (1st param) is the intent name as defined in LUIS
+// The dialog name (1st param) is the name to identified
 plugin.dialog('help', help).triggerAction({
     matches: 'picnic.intent.help'
 });
