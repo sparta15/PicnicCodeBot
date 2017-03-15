@@ -1,33 +1,73 @@
 {
-  "name": "picnicbot",
-  "version": "0.0.1",
-  "description": "Bot created for picnic code workshop",
-  "main": "app.js",
+  "name": "seed-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Seed project for a conversational bot for Telefonica",
+  "license": "UNLICENSED",
+  "repository": "https://github.com/Telefonica/seed-bot",
+  "author": "TDAF",
+  "keywords": [
+    "bot"
+  ],
+  "scripts-info": {
+    "info": "List available scripts",
+    "build": "Builds the plugin, by cleaning and compiling TypesScript into Javascript",
+    "compile": "Just compiles your code",
+    "dev": "Watch codebase, trigger compile when source code changes",
+    "lint": "Check coding guidelines conformance",
+    "security": "Check if your dependencies are secure",
+    "test": "Test your codebase"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "shx rm -fR ./lib",
+    "compile": "tsc",
+    "dev": "npm run build && npm run watch",
+    "info": "npm-scripts-info",
+    "lint": "tslint './src/**/*.ts'",
+    "prepublish": "npm run build",
+    "security": "nsp check",
+    "test": "# npm run build && mocha -R spec 'lib/**/*.spec.js'",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:ts": "tsc -w",
+    "watch:js": "nodemon --watch lib --exec 'cross-env LOGOPS_LEVEL=debug NODE_ENV=development node lib/app.js'",
+    "start": "NODE_ENV=production node lib/app.js",
+    "debug": "node --debug-brk lib/app.js -c",
+    "webdebug": "node --debug-brk lib/app.js"
+  },
   "dependencies": {
     "botbuilder": "^3.7.0",
-    "restify": "^4.3.0"
+    "dotenv": "^2.0.0",
+    "lodash": "^4.17.4",
+    "request": "^2.81.0",
+    "restify": "^4.3.0",
+    "scrape-it": "^3.3.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot.js"
+  "devDependencies": {
+    "@types/restify": "^2.0.41",
+    "@types/chai": "^3.4.33",
+    "@types/dotenv": "^2.0.18",
+    "@types/lodash": "^4.14.55",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.41",
+    "@types/request": "0.0.41",
+    "@types/sinon": "^1.16.30",
+    "@types/sinon-chai": "^2.7.27",
+    "chai": "^3.5.0",
+    "cross-env": "^3.1.3",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.9.2",
+    "npm-run-all": "^3.1.0",
+    "npm-scripts-info": "^0.3.6",
+    "nsp": "^2.6.1",
+    "shx": "^0.1.4",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sparta15/PicnicCodeBot.git"
+  "engines": {
+    "node": ">=6"
   },
-  "keywords": [
-    "Bot",
-    "PicnicCode",
-    "Stacks"
-  ],
-  "author": [
-    "Guillermo Pastor",
-    "Jorge Sanz"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sparta15/PicnicCodeBot/issues"
-  },
-  "homepage": "https://github.com/sparta15/PicnicCodeBot#readme"
+  "typings": "./lib/index.d.ts"
 }
