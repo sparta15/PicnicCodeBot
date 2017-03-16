@@ -4,6 +4,7 @@ import * as restify from 'restify';
 import * as BotBuilder from 'botbuilder';
 import greeting from './plugins/greeting/index'
 import help from './plugins/help/index'
+import stock from './plugins/stock/index'
 
 // Load configuration in process.env from the .env file
 dotenv.config();
@@ -39,3 +40,4 @@ bot.set('localizerSettings', {
 //Add library to use as plugins
 bot.library(greeting);
 bot.library(help);
+bot.library(stock);
