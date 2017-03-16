@@ -16,4 +16,4 @@ El taller está organizado y diseñado para avanzar sobre diferentes pasos:
 - [LUIS](https://www.luis.ai/home/index) - Servicio de Microsoft para el procesamiento del lenguaje natural.
 - [Bot Builder](https://github.com/Microsoft/BotBuilder) - SDK open source de bots conversacionales.
 
-Siguiente paso: [1. Prerrequisitos antes de comenzar el taller](https://github.com/sparta15/PicnicCodeBot/wiki/1.-Antes-de-venir-al-taller:-inst%C3%A1late-esto-r%C3%A1pidamente)
+Siguiente paso: [1. Prerrequisitos antes de comenzar el taller]()
