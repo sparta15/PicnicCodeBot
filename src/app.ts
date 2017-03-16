@@ -21,7 +21,7 @@ let connector = new BotBuilder.ChatConnector({
 server.post('/api/messages', connector.listen());
 
 let bot = new BotBuilder.UniversalBot(connector, (session: BotBuilder.Session) => {
-    session.endDialog("Sorry, I did not understand you");
+    session.endDialog('Sorry, I did not understand you');
 });
 
 const model = process.env.LUIS_MODEL;
@@ -31,7 +31,7 @@ bot.recognizer(new BotBuilder.LuisRecognizer(model));
 // Set default locale
 bot.set('localizerSettings', {
     botLocalePath: path.join(__dirname, '..', 'locale'),
-    defaultLocale: 'en-us'
+    defaultLocale: 'en'
 });
 
 bot.library(greeting);
