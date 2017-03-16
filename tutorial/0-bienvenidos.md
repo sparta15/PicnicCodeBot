@@ -11,7 +11,7 @@ El taller está organizado y diseñado para avanzar sobre diferentes pasos:
 3. Procesamiento del lenguaje natural
 4. Despliegue y exportación del bot a plataforma de mensajería
 
-## ¿Qué herramientas aprenderemos a usar?
+## ¿Qué herramientas aprenderemos a usar?
 - [Bot Framework](https://dev.botframework.com/) - Plataforma de Microsoft para la creación de bots inteligentes.
 - [LUIS](https://www.luis.ai/home/index) - Servicio de Microsoft para el procesamiento del lenguaje natural.
 - [Bot Builder](https://github.com/Microsoft/BotBuilder) - SDK open source de bots conversacionales.
