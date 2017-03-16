@@ -6,6 +6,5 @@ export default [
 ];
 
 function helloWorld(session: BotBuilder.Session, args: any, next: Function) {
-    session.send(session.preferredLocale());
-    session.endDialog('greeting.hello');
+    session.endDialog('hello');
 }
