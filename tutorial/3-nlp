@@ -1,0 +1,31 @@
+## Aplicando reconocimiento de lenguaje natural más avanzado
+En esta parte del taller aplicaremos técnicas de reconocimiento del lenguaje
+natural algo más complejas, porque introducimos el concepto de entidad (entity)
+en el análisis de los mensajes de los usuarios del bot.
+
+### Añadiendo intents y entities en LUIS
+El tutor del taller añadirá un nuevo intent cargado de sentencias y un set de
+entities de la forma: `What is the value of Apple stock?"` donde `Apple` puede
+ser el nombre de cualquier otra compañía que registremos.
+
+### Importando nuevas dependencias para este nuevo caso de uso:
+- Request: para realizar peticiones al API de Stocks.
+- Lodash: una librería con un montón de utilidades varias para la modularidad,
+la consistencia y el rendimiento de aplicaciones.
+
+Podemos importarlas directamente ejecutando:
+```
+npm install --save lodash && npm install --save-dev @types/lodash && npm install --save request && npm install --save-dev @types/request
+```
+
+### PUNTO DE CONTROL: `feat/NLP-3`
+En la rama `feat/NLP-3`, Stockito ya te devuelve el valor del Stock de la
+compañía por la que preguntes.
+
+### PUNTO DE CONTROL: `feat/image-4`
+En la rama `feat/image-4`, Stockito te enviará una gráfica de la evolución
+del precio del stock.
+
+### PUNTO DE CONTROL: `feat/buttons-5`
+En la rama `feat/buttons-5`, Stockito te preguntará si quieres comprar stocks
+después de haberte mostrado la gráfica de evolución.
