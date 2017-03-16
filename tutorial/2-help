@@ -1,0 +1,101 @@
+## Añadiendo un 'Bye' y un 'Help'
+## Bye
+### Añadiendo intents en LUIS.ai
+Siempre que queramos añadir un nuevo diálogo debemos primeramente añadir intents
+y entities en [LUIS.ai](). En este caso será el tutor del taller quien añada
+estos intents.
+
+### Añadiendo el nuevo diálogo a nuestro plugin de `greetings`
+En `src/plugins/greeting/index.ts` importaremos el diálogo de `goodbye` de
+la siguiente manera:
+```
+import goodbye from './picnic.intent.goodbye';
+...
+...
+plugin.dialog('goodbye', goodbye).triggerAction({
+    matches: 'picnic.intent.goodbye'
+});
+```
+`picnic.intent.goodbye` corresponde con el nombre del intent que hemos definido
+en LUIS.
+
+### Programando el diálogo `goodbye`
+Creamas un nuevo fichero llamado `picnic.intent.goodbye.ts`:
+```
+import * as BotBuilder from 'botbuilder';
+
+// This dialog is managed by this discrete steps
+export default [
+    goodbye
+];
+
+//Use endDialog to send a message and finish the dialog (session will lost after do it)
+function goodbye(session: BotBuilder.Session, args: any, next: Function) {
+    session.endDialog(session.gettext('Bye'));
+}
+```
+Este diálogo ejecuta esta única función `goodbye()` la cual únicamente envía
+`"Bye"` como respuesta.
+
+## Help
+Para el diálogo de `help` vamos a añadir un nuevo plugin.
+
+**¿Por qué plugins?**
+
+Es una buena forma de mantener una estructura organizada con plugins para
+escalar nuevas funcionalidades y dentro de esos plugins los diferentes diálogos
+a esos casos de uso.
+
+### Añadimos intents a LUIS
+El tutor del taller añadirá intents como:
+- "Help"
+- "Please, help me"
+- ...
+
+en la plataforma de LUIS para este nuevo diálogo.
+
+### Importándo el nuevo plugin
+Para importar el nuevo plugin `help` añadimos en `src/app.ts`:
+```
+import help from './plugins/help/index'
+...
+...
+bot.library(help);
+```
+
+### Creando el nuevo plugin
+Creamos un nuevo fichero `src/plugins/help/index.ts` el cuál será la entrada para
+este caso de uso y donde vamos a indexar todos los diálogos relacionados con
+`help`.
+```
+import * as BotBuilder from 'botbuilder';
+
+import help from './picnic.intent.help';
+
+let plugin = new BotBuilder.Library('help');
+
+plugin.dialog('help', help).triggerAction({
+    matches: 'picnic.intent.help'
+});
+
+export default plugin;
+```
+
+### Añadimos el diálogo `help`
+Añadimos el diálogo que responde a `help` añadiendo un nuevo fichero:
+`/src/plugins/help/picnic.intent.help.ts`:
+```
+import * as BotBuilder from 'botbuilder';
+
+export default [
+    help
+];
+
+function help(session: BotBuilder.Session, args: any, next: Function) {
+    session.endDialog(session.gettext('Need help?, try asking me something like: What is the value of Apple stock? and I will give you the exact value'));
+}
+```
+
+## Punto de control: `feat/Help-2`
+Si te has perdido en los pasos anteriores puedes obtener el código resuelto
+en la rama `feat/Help-2`.
